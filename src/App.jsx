@@ -11,7 +11,7 @@ export default function App() {
 
   // Context functionality
   const addTodo = (todo) => {
-    setTodos(prev => [{id: nanoid(), ...todo}, ...prev] )
+    setTodos(prev => [{id: nanoid(), todo, completed:false}, ...prev] )
   }
 
   const updateTodo = (id, todo) => {

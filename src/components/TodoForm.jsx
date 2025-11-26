@@ -10,7 +10,7 @@ export default function TodoForm() {
 
         if(!todo) return
 
-        addTodo({todo, Comment: false})/* sending an obj*/
+        addTodo(todo)
         setTodo("")
     }
 
