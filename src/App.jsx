@@ -11,21 +11,11 @@ export default function App() {
 
   // Context functionality
   const addTodo = (todo) => {
-    const newTodo = {
-      id: nanoid(),
-      todo: todo,
-      completed: false
-    }
-
-    setTodos(prev => [...prev, newTodo])
+    setTodos(prev => [{id: nanoid(), ...todo}, ...prev] )
   }
 
   const updateTodo = (id, todo) => {
-    setTodos(prev => {
-      prev.map(prevTodo => {
-        id === prevTodo.id ? todo : prevTodo
-      })
-    })
+    setTodos(prev => prev.map(prevTodo => (prevTodo.id === id ? todo : prevTodo )))
   }
 
   const deleteTodo = (id) => {
@@ -50,6 +40,14 @@ export default function App() {
     localStorage.setItem("todos", JSON.stringify(todos))
   }, [todos])
   
+  const todoList = todos.map(todo => (
+    <div 
+      key={todo.id} 
+      className="w-full"
+    >
+      <TodoItem todo={todo}/>
+    </div>
+  ))
 
   return (
     <TodoProvider value={{todos, addTodo, updateTodo, deleteTodo, toggleComplete}}>
@@ -60,7 +58,7 @@ export default function App() {
             <TodoForm/>
           </div>
           <div className="flex flex-wrap gap-y-3">
-            <TodoItem/>
+            {todoList}
           </div>
         </div>
       </div>
