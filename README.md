@@ -5,6 +5,13 @@ Perfect for understanding React state, context, hooks, and client-side data stor
 
 ---
 
+## 📸 Screenshots
+
+### Todo
+<img src="./screenshots/allInOne.png" alt="CRUD" />
+
+---
+
 ## 🎯 What is this app
 
 - Add, complete, and delete Todo items  
